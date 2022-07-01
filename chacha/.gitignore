@@ -1,0 +1,13 @@
+#
+# Standard Maven .gitignore
+#
+target/
+
+#
+# Visual Studio Code
+#
+.settings/
+.classpath
+.factorypath
+.project
+.vscode/
