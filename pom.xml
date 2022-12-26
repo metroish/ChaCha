@@ -6,10 +6,9 @@
 
   <groupId>com.midcielab</groupId>
   <artifactId>chacha</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.1</version>
 
   <name>chacha</name>
-  <!-- FIXME change it to the project's website -->
   <url></url>
 
   <properties>

@@ -35,14 +35,13 @@ public class ChaChaTest {
         SecureRandom sr = SecureRandom.getInstanceStrong();
         byte[] data = new byte[BUFFER_SIZE];
         sr.nextBytes(data);
-        Files.write(Paths.get(plain), data, StandardOpenOption.CREATE);
+        Files.write(Paths.get(plain), data, StandardOpenOption.CREATE);        
 
-        String[] encPara = { "e", "password5566", plain, enc };
-        assertTrue(new ChaCha().process(encPara));
+        String[] encPara = { "ev", "password5566", plain, enc };
+        assertTrue(new ChaCha().process(encPara));        
 
-        String[] decPara = { "d", "password5566", enc, dec };
-        assertTrue(new ChaCha().process(decPara));
-
+        String[] decPara = { "dv", "password5566", enc, dec };
+        assertTrue(new ChaCha().process(decPara));        
         assertTrue(Arrays.equals(sha256(plain), sha256(dec)));
 
         Files.deleteIfExists(new File(plain).toPath());
