@@ -32,7 +32,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class ChaCha {
 
-    private static final int KEY_ITERATION = 90001;
+    private static final int KEY_ITERATION = 600000;
     private static final int KEY_BIT_LENGTH = 256;
     private static final int NONCE_LENGTH_BYTE = 12;
     private static final int SALT_LENGTH_BYTE = 32;
