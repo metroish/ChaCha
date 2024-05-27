@@ -1,6 +1,7 @@
 package com.metroish;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,16 +13,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for ChaCha
  */
-public class ChaChaTest {
+class ChaChaTest {
     private static final int BUFFER_SIZE = 8192;
 
     @Test
-    public void testChaCha() throws IOException, NoSuchAlgorithmException {
+    void testChaCha() throws IOException, NoSuchAlgorithmException {
         String plain = "plan.txt";
         String enc = "enc.txt";
         String dec = "dec.txt";
@@ -33,13 +34,13 @@ public class ChaChaTest {
         SecureRandom sr = SecureRandom.getInstanceStrong();
         byte[] data = new byte[BUFFER_SIZE];
         sr.nextBytes(data);
-        Files.write(Paths.get(plain), data, StandardOpenOption.CREATE);        
+        Files.write(Paths.get(plain), data, StandardOpenOption.CREATE);
 
         String[] encPara = { "ev", "password5566", plain, enc };
-        assertTrue(new ChaCha().process(encPara));        
+        assertTrue(new ChaCha().process(encPara));
 
         String[] decPara = { "dv", "password5566", enc, dec };
-        assertTrue(new ChaCha().process(decPara));        
+        assertTrue(new ChaCha().process(decPara));
         assertTrue(Arrays.equals(sha256(plain), sha256(dec)));
 
         Files.deleteIfExists(new File(plain).toPath());
